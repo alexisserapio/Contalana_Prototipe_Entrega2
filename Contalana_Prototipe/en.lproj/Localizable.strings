@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Contalana_Prototipe
 
@@ -7,15 +7,20 @@
 */
 
 /*WELCOME INTERFACE*/
-"welcome.title" = "Bienvenido a Contalana";
-"welcome.subtitle" = "Logremos todas las metas y objetivos para tu negocio juntos";
-"welcome.button" = "Hagámoslo";
+"welcome.title" = "Welcome to Contalana";
+"welcome.subtitle" = "Let's achieve all the goals and objectives for your business together";
+"welcome.button" = "Let's do it";
 
 /*INFORMATIVE INTERFACE*/
-"informative.button" = "Continuar";
-"infoPoster.title.one" = "Contalana ayuda con el manejo de mi negocio";
-"infoPoster.description.one" = "Con Contalana, lleva un mejor control de los productos de tu negocio de una manera rápida e intuitiva";
-"infoPoster.title.two" = "Contalana hace que la gestión financiera sea sencilla";
-"infoPoster.description.two" = "Supervisa fácilmente los ingresos, ganancias y gastos de tu negocio y obten proyecciones a futuro, todo en un solo lugar";
-"infoPoster.title.three" = "Contalana apoya el crecimiento de mi negocio ";
-"infoPoster.description.three" = "Trabajemos juntos para lograr sacar el máximo potencial de tu negocio";
+"informative.button" = "Continue";
+"infoPoster.title.one" = "Contalana helps with managing my business";
+"infoPoster.description.one" = "With Contalana, keep better control of your business products in a quick and intuitive way";
+"infoPoster.title.two" = "Contalana makes financial management simple";
+"infoPoster.description.two" = "Easily monitor your business profits and expenses. Also, get future projections, all in one place";
+"infoPoster.title.three" = "Contalana supports the growth of my business";
+"infoPoster.description.three" = "Let's work together to bring out the full potential of your business!";
+
+/*BUSINESS NAME INTERFACE*/
+"bName.title" = "Are you ready to take your business management to the next level?";
+"bName.subtitle" = "What name would you like us to use to refer to your business?";
+"bName.button" = "I like this one";

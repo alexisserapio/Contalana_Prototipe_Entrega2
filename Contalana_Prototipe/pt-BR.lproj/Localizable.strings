@@ -1,0 +1,26 @@
+/*
+  Localizable.strings
+  Contalana_Prototipe
+
+  Created by UNAM on 22/08/25.
+  
+*/
+
+/*WELCOME INTERFACE*/
+"welcome.title" = "Bem-vindo ao Contalana";
+"welcome.subtitle" = "Vamos alcançar todas as metas e objetivos para o seu negócio juntos";
+"welcome.button" = "Vamos lá";
+
+/*INFORMATIVE INTERFACE*/
+"informative.button" = "Continuar";
+"infoPoster.title.one" = "O Contalana ajuda na gestão do meu negócio";
+"infoPoster.description.one" = "Com o Contalana, mantenha um melhor controle dos produtos do seu negócio de maneira rápida e intuitiva";
+"infoPoster.title.two" = "O Contalana torna a gestão financeira simples";
+"infoPoster.description.two" = "Monitore facilmente os lucros e as despesas do seu negócio. Além disso, obtenha projeções futuras, tudo em um só lugar";
+"infoPoster.title.three" = "O Contalana apoia o crescimento do meu negócio";
+"infoPoster.description.three" = "Vamos trabalhar juntos para liberar todo o potencial do seu negócio!";
+
+/*BUSINESS NAME INTERFACE*/
+"bName.title" = "Você está pronto para levar a gestão do seu negócio a outro nível?";
+"bName.subtitle" = "Com que nome você gostaria que nos referíssemos ao seu negócio?";
+"bName.button" = "Gosto deste";

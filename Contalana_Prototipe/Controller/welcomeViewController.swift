@@ -21,20 +21,35 @@ class welcomeViewController: UIViewController {
     }
     
     func prepareWelcomeUI(){
+        //WelcomeImage
+        
+        view.addSubview(welcomeImage)
+        welcomeImage.image = UIImage(named: "Logo")
+        welcomeImage.translatesAutoresizingMaskIntoConstraints = false
+        //Constraints Welcome Image
+        NSLayoutConstraint.activate([
+            welcomeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            welcomeImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -25)
+        ])
+        
+        
         //WelcomeLabel
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "welcome.title".localized
+        welcomeLabel.textColor = UIColor.white
+        welcomeLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         //Constraints Welcome Label
         NSLayoutConstraint.activate([
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -225)
+            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175)
         ])
         
         //WelcomeSubtitleLabel
         view.addSubview(welcomeSubtitleLabel)
         welcomeSubtitleLabel.text = "welcome.subtitle".localized
+        welcomeSubtitleLabel.textColor = UIColor.white
         welcomeSubtitleLabel.textAlignment = .center // Centrar texto dentro del label
         welcomeSubtitleLabel.numberOfLines = 0
         welcomeSubtitleLabel.lineBreakMode = .byWordWrapping
@@ -45,7 +60,7 @@ class welcomeViewController: UIViewController {
             welcomeSubtitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40),
             welcomeSubtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -40),
             welcomeSubtitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeSubtitleLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150)
+            welcomeSubtitleLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -125)
         ])
         
         //Welcome Button
@@ -53,14 +68,14 @@ class welcomeViewController: UIViewController {
         welcomeButton.setTitle("welcome.button".localized, for: .normal)
         welcomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         welcomeButton.setTitleColor(.white, for: .normal)
-        welcomeButton.backgroundColor = .systemBlue
+        welcomeButton.backgroundColor = .init(named: "CL_darkBlue")
         welcomeButton.layer.cornerRadius = 12
         welcomeButton.translatesAutoresizingMaskIntoConstraints = false
 
         // Constraints WelcomeButton
         NSLayoutConstraint.activate([
             welcomeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            welcomeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             welcomeButton.widthAnchor.constraint(equalToConstant: 350),
             welcomeButton.heightAnchor.constraint(equalToConstant: 50)
         ])

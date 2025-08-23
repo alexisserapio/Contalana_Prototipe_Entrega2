@@ -52,6 +52,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="geu-fT-ksx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="a32-RB-eVd" appends="YES" id="05o-kf-3ML"/>
+                            <outletCollection property="gestureRecognizers" destination="pUL-nr-HyD" appends="YES" id="Nfa-6h-oiQ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="0Nh-iI-8j7"/>
                     <connections>
@@ -59,13 +64,15 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRJ-VS-GvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="a32-RB-eVd" userLabel="RightSwipe"/>
+                <swipeGestureRecognizer direction="left" id="pUL-nr-HyD" userLabel="LeftSwipe"/>
             </objects>
             <point key="canvasLocation" x="954.96183206106866" y="-28.169014084507044"/>
         </scene>
-        <!--View Controller-->
+        <!--Name View Controller-->
         <scene sceneID="8sE-oG-MIW">
             <objects>
-                <viewController id="ecO-oe-hvc" sceneMemberID="viewController">
+                <viewController id="ecO-oe-hvc" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJA-sb-HNH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
