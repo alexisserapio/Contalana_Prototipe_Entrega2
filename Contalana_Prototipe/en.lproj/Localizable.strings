@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Contalana_Prototipe
+
+  Created by UNAM on 22/08/25.
+  
+*/
+
+/*WELCOME INTERFACE*/
+"welcome.title" = "Bienvenido a Contalana";
+"welcome.subtitle" = "Logremos todas las metas y objetivos para tu negocio juntos";
+"welcome.button" = "Hagámoslo";
+
+/*INFORMATIVE INTERFACE*/
+"informative.button" = "Continuar";
+"infoPoster.title.one" = "Contalana ayuda con el manejo de mi negocio";
+"infoPoster.description.one" = "Con Contalana, lleva un mejor control de los productos de tu negocio de una manera rápida e intuitiva";
+"infoPoster.title.two" = "Contalana hace que la gestión financiera sea sencilla";
+"infoPoster.description.two" = "Supervisa fácilmente los ingresos, ganancias y gastos de tu negocio y obten proyecciones a futuro, todo en un solo lugar";
+"infoPoster.title.three" = "Contalana apoya el crecimiento de mi negocio ";
+"infoPoster.description.three" = "Trabajemos juntos para lograr sacar el máximo potencial de tu negocio";
