@@ -24,3 +24,4 @@
 "bName.title" = "Are you ready to take your business management to the next level?";
 "bName.subtitle" = "What name would you like us to use to refer to your business?";
 "bName.button" = "I like this one";
+"bName.TextField.hint" = "\"EZ Market\"";

@@ -12,6 +12,7 @@ class bNameViewController: UIViewController {
     let bNameTitleLabel = UILabel()
     let bNameSubLabel = UILabel()
     let bNameButton = UIButton(type: .system)
+    let bNameTextField = UITextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class bNameViewController: UIViewController {
         //Constraints Welcome Label
         NSLayoutConstraint.activate([
             bNameTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bNameTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45),
+            bNameTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 85),
             bNameTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 15),
             bNameTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -15),
         ])
@@ -72,6 +73,30 @@ class bNameViewController: UIViewController {
             bNameButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+        // Configuración básica
+        bNameTextField.layer.borderWidth = 0.25
+        bNameTextField.layer.cornerRadius = 10
+        bNameTextField.textColor = .init(UIColor.clDarkBlue)
+        bNameTextField.textAlignment = .center
+        //.placeholder = "bName.TextField.hint".localized
+        bNameTextField.attributedPlaceholder = NSAttributedString(
+            string: "bName.TextField.hint".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
+        bNameTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        // Agregar a la vista
+        view.addSubview(bNameTextField)
+
+        // Constraints
+        NSLayoutConstraint.activate([
+            bNameTextField.topAnchor.constraint(equalTo: bNameSubLabel.bottomAnchor, constant: 30),
+            bNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            bNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            bNameTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+
         //Welcome Button Actions
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
         bNameButton.addGestureRecognizer(tapGesture)

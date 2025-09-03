@@ -24,3 +24,4 @@
 "bName.title" = "Você está pronto para levar a gestão do seu negócio a outro nível?";
 "bName.subtitle" = "Com que nome você gostaria que nos referíssemos ao seu negócio?";
 "bName.button" = "Gosto deste";
+"bName.TextField.hint" = "Abarrotes \"La esquinita\"";

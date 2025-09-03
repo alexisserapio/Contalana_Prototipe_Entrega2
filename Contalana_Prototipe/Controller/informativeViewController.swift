@@ -91,14 +91,14 @@ class informativeViewController: UIViewController {
         pageControl.currentPage = 0
         pageControl.addTarget(self, action: #selector(pageChanged), for: .valueChanged)
         pageControl.pageIndicatorTintColor = UIColor { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? .init(named: "backgroundGreen")! : .init(named: "CL_darkGreen")!
+            return traitCollection.userInterfaceStyle == .dark ? .init(named: "backgroundGreen")! : .init(named: "backgroundGreen")!
         }
         pageControl.currentPageIndicatorTintColor = UIColor { traitCollection in
             return traitCollection.userInterfaceStyle == .dark ? .init(named: "darkestGreen")! : .init(named: "darkestGreen")!
         }
         pageControl.backgroundColor = UIColor { trait in
             trait.userInterfaceStyle == .dark ? .init(named: "CL_darkGreen")! :
-                .init(named: "backgroundGreen")!
+                .init(named: "CL_darkGreen")!
         }
         pageControl.layer.cornerRadius = 12
 
@@ -147,22 +147,47 @@ class informativeViewController: UIViewController {
     }
 
     @objc private func pageChanged() {
-        topLabel.text = informativePosters[pageControl.currentPage].title.localized
-        bottomLabel.text = informativePosters[pageControl.currentPage].description.localized
+        let nextPoster = informativePosters[pageControl.currentPage]
+        
+       
+        UIView.transition(with: imageView,
+                        duration: 0.4,
+                        options: .transitionFlipFromLeft,
+                        animations: {
+            self.imageView.image = UIImage(named: nextPoster.poster.localized)
+        })
+        
+        UIView.transition(with: topLabel,
+                          duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+            self.topLabel.text = nextPoster.title.localized
+        })
+        
+        UIView.transition(with: bottomLabel,
+                          duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+            self.bottomLabel.text = nextPoster.description.localized
+        })
     }
+
 
     
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .left {
             if pageControl.currentPage < informativePosters.count - 1 {
                 pageControl.currentPage += 1
+                pageChanged() // Actualiza la información en labels e imagen
             }
         } else if gesture.direction == .right {
             if pageControl.currentPage > 0 {
                 pageControl.currentPage -= 1
+                pageChanged() // Actualiza la información en labels e imagen
+            }else if pageControl.currentPage == 0{
+                print("Ya no me regreso")
             }
         }
-        pageChanged() // Actualiza la información en labels e imagen
     }
     
     @objc func buttonTapped() {

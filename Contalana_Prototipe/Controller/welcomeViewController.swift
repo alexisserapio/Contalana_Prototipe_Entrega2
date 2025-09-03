@@ -37,13 +37,18 @@ class welcomeViewController: UIViewController {
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "welcome.title".localized
         welcomeLabel.textColor = UIColor.white
-        welcomeLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 44, weight: .bold)
+        welcomeLabel.textAlignment = .center
+        welcomeLabel.numberOfLines = 0
+        welcomeLabel.lineBreakMode = .byWordWrapping
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         //Constraints Welcome Label
         NSLayoutConstraint.activate([
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175)
+            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175),
+            welcomeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 10),
+            welcomeLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10)
         ])
         
         //WelcomeSubtitleLabel
