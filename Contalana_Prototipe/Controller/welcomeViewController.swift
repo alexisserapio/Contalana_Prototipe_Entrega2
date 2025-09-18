@@ -12,24 +12,36 @@ class welcomeViewController: UIViewController {
     let welcomeLabel = UILabel()
     let welcomeSubtitleLabel = UILabel()
     let welcomeButton = UIButton(type: .system)
-    let welcomeImage = UIImageView()
+    let welcome_BlueSquare = UIImageView()
+    let welcome_GreenSquare = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareWelcomeUI()
         // Do any additional setup after loading the view.
+        runWelcomeAnimation(blueSquare: welcome_BlueSquare, greenSquare: welcome_GreenSquare, title: welcomeLabel, subtitle: welcomeSubtitleLabel, button: welcomeButton)
     }
     
     func prepareWelcomeUI(){
         //WelcomeImage
-        
-        view.addSubview(welcomeImage)
-        welcomeImage.image = UIImage(named: "Logo")
-        welcomeImage.translatesAutoresizingMaskIntoConstraints = false
-        //Constraints Welcome Image
+        welcome_BlueSquare.image = UIImage(named: "square_lightblue")
+        welcome_BlueSquare.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(welcome_BlueSquare)
         NSLayoutConstraint.activate([
-            welcomeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -25)
+            welcome_BlueSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 85),
+            welcome_BlueSquare.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: 135),
+            welcome_BlueSquare.widthAnchor.constraint(equalToConstant: 750),
+            welcome_BlueSquare.heightAnchor.constraint(equalToConstant: 750)
+        ])
+        
+        welcome_GreenSquare.image = UIImage(named: "square_lightgreen")
+        welcome_GreenSquare.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(welcome_GreenSquare)
+        NSLayoutConstraint.activate([
+            welcome_GreenSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300),
+            welcome_GreenSquare.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant: 80),
+            welcome_GreenSquare.widthAnchor.constraint(equalToConstant: 750),
+            welcome_GreenSquare.heightAnchor.constraint(equalToConstant: 750)
         ])
         
         
@@ -43,12 +55,12 @@ class welcomeViewController: UIViewController {
         welcomeLabel.lineBreakMode = .byWordWrapping
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        //Constraints Welcome Label
+        //Constraints Welcome Subtitle Label
         NSLayoutConstraint.activate([
+            welcomeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40),
+            welcomeLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -40),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175),
-            welcomeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 10),
-            welcomeLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10)
+            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175)
         ])
         
         //WelcomeSubtitleLabel
@@ -96,6 +108,39 @@ class welcomeViewController: UIViewController {
         print("Botón presionado")
         self.performSegue(withIdentifier: "welcomeSegue", sender: self)
     }
+    
+    func runWelcomeAnimation(blueSquare: UIImageView, greenSquare: UIImageView, title: UILabel, subtitle: UILabel, button: UIButton) {
+        
+        // Estado inicial (invisible)
+        title.alpha = 0
+        subtitle.alpha = 0
+        button.alpha = 0
+        
+        // Animación del cuadrado azul
+        UIView.animate(withDuration: 0.8, animations: {
+            blueSquare.transform = CGAffineTransform(rotationAngle: CGFloat(25 * 3.1416 / 180))
+        }) { _ in
+            // Cuando termine la animación azul → aparece el título
+            UIView.animate(withDuration: 0.8, animations: {
+                title.alpha = 1
+            }) { _ in
+                // Luego el subtítulo
+                UIView.animate(withDuration: 0.5, animations: {
+                    subtitle.alpha = 1
+                }) { _ in
+                    // Finalmente el botón
+                    UIView.animate(withDuration: 0.5) {
+                        button.alpha = 1
+                    }
+                }
+            }
+        }
+            
+            // Animación del cuadrado verde en paralelo
+            UIView.animate(withDuration: 0.8) {
+                greenSquare.transform = CGAffineTransform(rotationAngle: CGFloat(-25 * 3.1416 / 180))
+            }
+        }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
 //        let destinationViewController = segue.destination as! informativeViewController

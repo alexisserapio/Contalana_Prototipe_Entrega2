@@ -76,7 +76,8 @@ class bNameViewController: UIViewController {
         // Configuración básica
         bNameTextField.layer.borderWidth = 0.25
         bNameTextField.layer.cornerRadius = 10
-        bNameTextField.textColor = .init(UIColor.clDarkBlue)
+        bNameTextField.font = .systemFont(ofSize: 28)
+        bNameTextField.textColor = .init(UIColor.clDarkBlue		)
         bNameTextField.textAlignment = .center
         //.placeholder = "bName.TextField.hint".localized
         bNameTextField.attributedPlaceholder = NSAttributedString(
