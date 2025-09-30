@@ -15,7 +15,9 @@ class bNameViewController: UIViewController {
     let bNameTextField = UITextField()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         setupBNameUI()
 
         // Do any additional setup after loading the view.
@@ -74,17 +76,19 @@ class bNameViewController: UIViewController {
         ])
         
         // Configuración básica
-        bNameTextField.layer.borderWidth = 0.25
-        bNameTextField.layer.cornerRadius = 10
-        bNameTextField.font = .systemFont(ofSize: 28)
-        bNameTextField.textColor = .init(UIColor.clDarkBlue		)
-        bNameTextField.textAlignment = .center
-        //.placeholder = "bName.TextField.hint".localized
+        let underline = CALayer()
+        underline.backgroundColor = UIColor.darkGray.cgColor
+        underline.frame = CGRect(x: 0, y: 49, width: UIScreen.main.bounds.width - 60, height: 1) // 49 porque la altura es 50
+        bNameTextField.layer.addSublayer(underline)
+        
         bNameTextField.attributedPlaceholder = NSAttributedString(
             string: "bName.TextField.hint".localized,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         bNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        bNameTextField.font = .systemFont(ofSize: 28)
+        bNameTextField.textAlignment = .center
+        bNameTextField.borderStyle = .none
 
         // Agregar a la vista
         view.addSubview(bNameTextField)
@@ -107,6 +111,15 @@ class bNameViewController: UIViewController {
     
     @objc func buttonTapped() {
         print("Botón bName presionado")
+        if let businessName = bNameTextField.text{
+            if businessName.isEmpty{
+                let emptyTextField = UIAlertController(title: "bName.Alert.title".localized, message: "bName.Alert.message".localized, preferredStyle: .alert)
+                let bNameAlertButton = UIAlertAction(title: "bName.Alert.button".localized, style: .default, handler: nil)
+                
+                emptyTextField.addAction(bNameAlertButton)
+                self.present(emptyTextField, animated: true, completion: nil)
+            }
+        }
         //self.performSegue(withIdentifier: "welcomeSegue", sender: self)
     }
 

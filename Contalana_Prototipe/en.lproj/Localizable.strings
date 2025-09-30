@@ -25,3 +25,6 @@
 "bName.subtitle" = "What name would you like us to use to refer to your business?";
 "bName.button" = "I like this one";
 "bName.TextField.hint" = "\"EZ Market\"";
+"bName.Alert.title" = "Warning";
+"bName.Alert.message" = "Please, enter a valid name for your business";
+"bName.Alert.button" = "Ok";

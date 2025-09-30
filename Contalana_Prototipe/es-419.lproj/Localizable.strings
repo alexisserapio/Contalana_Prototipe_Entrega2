@@ -25,4 +25,6 @@
 "bName.subtitle" = "¿Con que nombre te gustaría que nos refirieramos a tu negocio?";
 "bName.button" = "Este me agrada";
 "bName.TextField.hint" = "Abarrotes \"La esquinita\"";
-
+"bName.Alert.title" = "Aviso";
+"bName.Alert.message" = "Por favor, introduce un nombre válido para tu negocio";
+"bName.Alert.button" = "Aceptar";
