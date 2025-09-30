@@ -46,7 +46,7 @@ class informativeViewController: UIViewController {
         informativeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         informativeButton.setTitleColor(.white, for: .normal)
         informativeButton.backgroundColor = .init(named: "CL_darkBlue")
-        informativeButton.layer.cornerRadius = 12
+        informativeButton.layer.cornerRadius = 18
         informativeButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([

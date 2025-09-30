@@ -64,7 +64,7 @@ class bNameViewController: UIViewController {
         bNameButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         bNameButton.setTitleColor(.white, for: .normal)
         bNameButton.backgroundColor = .init(named: "CL_darkBlue")
-        bNameButton.layer.cornerRadius = 12
+        bNameButton.layer.cornerRadius = 18
         bNameButton.translatesAutoresizingMaskIntoConstraints = false
 
         // Constraints WelcomeButton

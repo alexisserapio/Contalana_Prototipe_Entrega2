@@ -28,3 +28,5 @@
 "bName.Alert.title" = "Aviso";
 "bName.Alert.message" = "Por favor, insira um nome válido para o seu negócio";
 "bName.Alert.button" = "OK";
+"welcome.terms" = "Ao continuar, você concorda com os Termos e Condições da Contalana e aceita nossa Política de Privacidade.";
+"welcome.signin" = "Já tem uma conta? Entrar";

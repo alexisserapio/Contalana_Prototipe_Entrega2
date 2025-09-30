@@ -67,11 +67,12 @@
                 <swipeGestureRecognizer direction="right" id="a32-RB-eVd" userLabel="RightSwipe"/>
                 <swipeGestureRecognizer direction="left" id="pUL-nr-HyD" userLabel="LeftSwipe"/>
             </objects>
-            <point key="canvasLocation" x="954.96183206106866" y="-28.169014084507044"/>
+            <point key="canvasLocation" x="967" y="-28"/>
         </scene>
         <!--Name View Controller-->
         <scene sceneID="8sE-oG-MIW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKY-HN-ap1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ecO-oe-hvc" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJA-sb-HNH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -79,11 +80,28 @@
                         <viewLayoutGuide key="safeArea" id="M7c-U2-2lj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5XC-rk-J5j"/>
+                    <connections>
+                        <segue destination="beO-O2-03M" kind="show" id="5dX-6J-HEK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GKY-HN-ap1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="-28"/>
+            <point key="canvasLocation" x="1792" y="-28"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oQX-3M-uCI">
+            <objects>
+                <viewController id="beO-O2-03M" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Us-Q6-v1P">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="doQ-0F-aqw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="81M-Kn-qmF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="-18"/>
         </scene>
     </scenes>
     <resources>
