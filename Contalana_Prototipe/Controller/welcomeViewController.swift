@@ -14,7 +14,8 @@ class welcomeViewController: UIViewController {
     let welcomeButton = UIButton(type: .system)
     let welcome_BlueSquare = UIImageView()
     let welcome_GreenSquare = UIImageView()
-    let welcomeTermsConditions = UILabel()
+    let welcomeTermsConditions = UITextView()
+    let welcomeSignin = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,22 +100,35 @@ class welcomeViewController: UIViewController {
             welcomeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+        //Terms and Conditions
+        
         view.addSubview(welcomeTermsConditions)
-        welcomeTermsConditions.text = "welcome.terms".localized
-        welcomeTermsConditions.textColor = UIColor.white
-        welcomeTermsConditions.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        welcomeTermsConditions.textAlignment = .center // Centrar texto dentro del label
-        welcomeTermsConditions.numberOfLines = 0
-        welcomeTermsConditions.lineBreakMode = .byWordWrapping
+        welcomeTermsConditions.isSelectable = true
+        
+        let ATTerms = NSMutableAttributedString(string: "welcome.terms".localized, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .light),
+            .foregroundColor: UIColor.white
+        ])
+        
+        let ATTermsTappable = ("welcome.terms".localized as NSString).range(of: "Terms and Conditions")
+        
+        ATTerms.addAttribute(.foregroundColor, value: UIColor(named: "CL_lightBlue")!, range: ATTermsTappable)
+        
+//        welcomeTermsConditions.textColor = UIColor.white
+//        welcomeTermsConditions.font = UIFont.systemFont(ofSize: 14, weight: .light)
+//        welcomeTermsConditions.textAlignment = .center
+//        welcomeTermsConditions.numberOfLines = 0
+//        welcomeTermsConditions.lineBreakMode = .byWordWrapping
         welcomeTermsConditions.translatesAutoresizingMaskIntoConstraints = false
         
-        //Constraints Welcome Subtitle Label
+        //Constraints Welcome Terms and Conditions
         NSLayoutConstraint.activate([
             welcomeTermsConditions.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 30),
             welcomeTermsConditions.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -30),
             welcomeTermsConditions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeTermsConditions.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            welcomeTermsConditions.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35)
         ])
+        
         
         //Welcome Button Actions
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
@@ -127,6 +141,7 @@ class welcomeViewController: UIViewController {
         print("Botón presionado")
         self.performSegue(withIdentifier: "welcomeSegue", sender: self)
     }
+    
     
     func runWelcomeAnimation(blueSquare: UIImageView, greenSquare: UIImageView, title: UILabel, subtitle: UILabel, button: UIButton) {
         
