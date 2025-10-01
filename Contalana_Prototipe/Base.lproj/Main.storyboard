@@ -37,11 +37,12 @@
                     <navigationItem key="navigationItem" id="3Ex-Um-fHO"/>
                     <connections>
                         <segue destination="5sU-54-9bJ" kind="show" identifier="welcomeSegue" id="foY-WN-6kx"/>
+                        <segue destination="drl-vy-DRj" kind="show" identifier="navigatorSegue" id="zYv-y5-vbM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-28"/>
+            <point key="canvasLocation" x="167" y="-14"/>
         </scene>
         <!--Informative View Controller-->
         <scene sceneID="4J9-mR-ZL2">
@@ -69,11 +70,11 @@
             </objects>
             <point key="canvasLocation" x="967" y="-28"/>
         </scene>
-        <!--Name View Controller-->
+        <!--bName View Controller-->
         <scene sceneID="8sE-oG-MIW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKY-HN-ap1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="ecO-oe-hvc" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ecO-oe-hvc" userLabel="bName View Controller" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJA-sb-HNH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="1792" y="-28"/>
         </scene>
-        <!--View Controller-->
+        <!--form View Controller-->
         <scene sceneID="oQX-3M-uCI">
             <objects>
-                <viewController id="beO-O2-03M" sceneMemberID="viewController">
+                <viewController id="beO-O2-03M" userLabel="form View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Us-Q6-v1P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +103,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2666" y="-18"/>
+        </scene>
+        <!--Terms View Controller-->
+        <scene sceneID="gRn-BW-twM">
+            <objects>
+                <viewController id="drl-vy-DRj" userLabel="Terms View Controller" customClass="navigatorViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cnv-qm-DbR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mf4-so-GVJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FPl-wS-ANl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dC3-Hn-7eB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="694"/>
         </scene>
     </scenes>
     <resources>

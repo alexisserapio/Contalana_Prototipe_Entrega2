@@ -7,7 +7,7 @@
 
 import UIKit
 
-class welcomeViewController: UIViewController {
+class welcomeViewController: UIViewController, UITextViewDelegate {
     
     let welcomeLabel = UILabel()
     let welcomeSubtitleLabel = UILabel()
@@ -101,25 +101,33 @@ class welcomeViewController: UIViewController {
         ])
         
         //Terms and Conditions
-        
-        view.addSubview(welcomeTermsConditions)
-        welcomeTermsConditions.isSelectable = true
+        welcomeTermsConditions.isEditable = false
+        welcomeTermsConditions.isScrollEnabled = false
+        welcomeTermsConditions.delegate = self
+        welcomeTermsConditions.backgroundColor = .clear
+        welcomeTermsConditions.textContainerInset = .zero
+        welcomeTermsConditions.textContainer.lineFragmentPadding = 0
+        welcomeTermsConditions.isSelectable = true // necesario para que los links funcionen
         
         let ATTerms = NSMutableAttributedString(string: "welcome.terms".localized, attributes: [
             .font: UIFont.systemFont(ofSize: 14, weight: .light),
             .foregroundColor: UIColor.white
         ])
         
-        let ATTermsTappable = ("welcome.terms".localized as NSString).range(of: "Terms and Conditions")
+        let ATTermsTappable = ("welcome.terms".localized as NSString).range(of: "Términos y Condiciones")
         
         ATTerms.addAttribute(.foregroundColor, value: UIColor(named: "CL_lightBlue")!, range: ATTermsTappable)
+        ATTerms.addAttribute(.link, value: "action://navigatorSegue", range: ATTermsTappable)
         
-//        welcomeTermsConditions.textColor = UIColor.white
-//        welcomeTermsConditions.font = UIFont.systemFont(ofSize: 14, weight: .light)
-//        welcomeTermsConditions.textAlignment = .center
-//        welcomeTermsConditions.numberOfLines = 0
-//        welcomeTermsConditions.lineBreakMode = .byWordWrapping
+        welcomeTermsConditions.attributedText = ATTerms
+        
+        welcomeTermsConditions.linkTextAttributes = [
+            .foregroundColor: UIColor(named: "CL_lightBlue")!,
+            .underlineStyle: 0
+        ]
+
         welcomeTermsConditions.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(welcomeTermsConditions)
         
         //Constraints Welcome Terms and Conditions
         NSLayoutConstraint.activate([
@@ -141,6 +149,15 @@ class welcomeViewController: UIViewController {
         print("Botón presionado")
         self.performSegue(withIdentifier: "welcomeSegue", sender: self)
     }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+            if URL.scheme == "action" {
+                // Ejecuta el segue con el identifier que hayas definido en el Storyboard
+                performSegue(withIdentifier: "navigatorSegue", sender: nil)
+                return false // ya manejamos la interacción
+            }
+            return true
+        }
     
     
     func runWelcomeAnimation(blueSquare: UIImageView, greenSquare: UIImageView, title: UILabel, subtitle: UILabel, button: UIButton) {
