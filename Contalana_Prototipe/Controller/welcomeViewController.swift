@@ -7,6 +7,18 @@
 
 import UIKit
 
+
+class NoSelectableTextView: UITextView {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false // oculta menú copiar/pegar
+    }
+
+    override var selectedTextRange: UITextRange? {
+        get { return nil } // evita selección
+        set { }
+    }
+}
+
 class welcomeViewController: UIViewController, UITextViewDelegate {
     
     let welcomeLabel = UILabel()
@@ -14,8 +26,8 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
     let welcomeButton = UIButton(type: .system)
     let welcome_BlueSquare = UIImageView()
     let welcome_GreenSquare = UIImageView()
-    let welcomeTermsConditions = UITextView()
-    let welcomeSignin = UILabel()
+    let welcomeTermsConditions = NoSelectableTextView()
+    let welcomeSignIn = NoSelectableTextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +63,7 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "welcome.title".localized
         welcomeLabel.textColor = UIColor.white
-        welcomeLabel.font = UIFont.systemFont(ofSize: 44, weight: .bold)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 48, weight: .bold)
         welcomeLabel.textAlignment = .center
         welcomeLabel.numberOfLines = 0
         welcomeLabel.lineBreakMode = .byWordWrapping
@@ -69,7 +81,7 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         view.addSubview(welcomeSubtitleLabel)
         welcomeSubtitleLabel.text = "welcome.subtitle".localized
         welcomeSubtitleLabel.textColor = UIColor.white
-        welcomeSubtitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        welcomeSubtitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         welcomeSubtitleLabel.textAlignment = .center // Centrar texto dentro del label
         welcomeSubtitleLabel.numberOfLines = 0
         welcomeSubtitleLabel.lineBreakMode = .byWordWrapping
@@ -109,20 +121,31 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         welcomeTermsConditions.textContainer.lineFragmentPadding = 0
         welcomeTermsConditions.isSelectable = true // necesario para que los links funcionen
         
-        let ATTerms = NSMutableAttributedString(string: "welcome.terms".localized, attributes: [
-            .font: UIFont.systemFont(ofSize: 14, weight: .light),
+        let termsText = NSMutableAttributedString(string: "welcome.terms".localized, attributes: [
+            .font: UIFont.systemFont(ofSize: 12, weight: .light),
             .foregroundColor: UIColor.white
         ])
         
-        let ATTermsTappable = ("welcome.terms".localized as NSString).range(of: "Términos y Condiciones")
+        let tappableTermsText = ("welcome.terms".localized as NSString).range(of: "welcome.terms.label".localized)
         
-        ATTerms.addAttribute(.foregroundColor, value: UIColor(named: "CL_lightBlue")!, range: ATTermsTappable)
-        ATTerms.addAttribute(.link, value: "action://navigatorSegue", range: ATTermsTappable)
+        let tappablePrivacyText = ("welcome.terms".localized as NSString).range(of: "welcome.terms.policy".localized)
         
-        welcomeTermsConditions.attributedText = ATTerms
+        termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue , range: tappableTermsText)
+        termsText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: tappableTermsText)
+        termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappableTermsText)
+        termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue , range: tappablePrivacyText)
+        termsText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: tappablePrivacyText)
+        termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappablePrivacyText)//Modificar el link al agregar la pólitica
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+
+        termsText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: termsText.length))
+        
+        welcomeTermsConditions.attributedText = termsText
         
         welcomeTermsConditions.linkTextAttributes = [
-            .foregroundColor: UIColor(named: "CL_lightBlue")!,
+            .foregroundColor: UIColor.clDarkBlue,
             .underlineStyle: 0
         ]
 
@@ -131,12 +154,51 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         //Constraints Welcome Terms and Conditions
         NSLayoutConstraint.activate([
-            welcomeTermsConditions.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 30),
-            welcomeTermsConditions.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -30),
+            welcomeTermsConditions.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 20),
+            welcomeTermsConditions.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
             welcomeTermsConditions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeTermsConditions.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35)
+            welcomeTermsConditions.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
         
+        //Sign In
+        welcomeSignIn.isEditable = false
+        welcomeSignIn.isScrollEnabled = false
+        welcomeSignIn.delegate = self
+        welcomeSignIn.backgroundColor = .clear
+        welcomeSignIn.textContainerInset = .zero
+        welcomeSignIn.textContainer.lineFragmentPadding = 0
+        welcomeSignIn.isSelectable = true // necesario para que los links funcionen
+        
+        let signInText = NSMutableAttributedString(string: "welcome.signin".localized, attributes: [
+            .font: UIFont.systemFont(ofSize: 16, weight: .semibold),
+            .foregroundColor: UIColor.white
+        ])
+        
+        let tappableSignInText = ("welcome.signin".localized as NSString).range(of: "welcome.signin.label".localized)
+        
+        signInText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue, range: tappableSignInText)
+        signInText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: tappableSignInText)
+        signInText.addAttribute(.link, value: "action://navigatorSegue", range: tappableSignInText)
+        
+        signInText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: signInText.length))
+        
+        welcomeSignIn.attributedText = signInText
+        
+        welcomeSignIn.linkTextAttributes = [
+            .foregroundColor: UIColor.clDarkBlue,
+            .underlineStyle: 0
+        ]
+        
+        welcomeSignIn.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(welcomeSignIn)
+        
+        //Constraints Welcome Terms and Conditions
+        NSLayoutConstraint.activate([
+            welcomeSignIn.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 50),
+            welcomeSignIn.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -50),
+            welcomeSignIn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            welcomeSignIn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
+        ])
         
         //Welcome Button Actions
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
