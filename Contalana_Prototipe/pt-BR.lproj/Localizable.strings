@@ -8,8 +8,13 @@
 
 /*WELCOME INTERFACE*/
 "welcome.title" = "Bem-vindo ao Contalana";
-"welcome.subtitle" = "Vamos alcançar todas as metas e objetivos para o seu negócio juntos";
+"welcome.subtitle" = "Vamos alcançar todas as metas e objetivos para o seu negócio juntos!";
 "welcome.button" = "Vamos lá";
+"welcome.terms" = "Ao continuar, você concorda com os Termos e Condições da Contalana e aceita nossa Política de Privacidade.";
+"welcome.terms.label" = "Termos e Condições da Contalana";
+"welcome.terms.policy" = "Política de Privacidade";
+"welcome.signin" = "Já tem uma conta?   Entrar";
+"welcome.signin.label" = "Entrar";
 
 /*INFORMATIVE INTERFACE*/
 "informative.button" = "Continuar";
@@ -25,11 +30,7 @@
 "bName.subtitle" = "Com que nome você gostaria que nos referíssemos ao seu negócio?";
 "bName.button" = "Gosto deste";
 "bName.TextField.hint" = "Abarrotes \"La esquinita\"";
-"bName.Alert.title" = "Aviso";
-"bName.Alert.message" = "Por favor, insira um nome válido para o seu negócio";
-"bName.Alert.button" = "OK";
-"welcome.terms" = "Ao continuar, você concorda com os Termos e Condições da Contalana e aceita nossa Política de Privacidade.";
-"welcome.terms.label" = "Termos e Condições da Contalana";
-"welcome.terms.policy" = "Política de Privacidade";
-"welcome.signin" = "Já tem uma conta?   Entrar";
-"welcome.signin.label" = "Entrar";
+"bName.Alert.title" = "Por favor, insira um nome válido para o seu negócio";
+"bName.Alert.empty" = "O nome da negócio não deve estar vazio";
+"bName.Alert.notValid" = "Use entre 5 e 32 caracteres, incluindo letras, números e os símbolos: . _ $ & /";
+"bName.Alert.button" = "Ok";

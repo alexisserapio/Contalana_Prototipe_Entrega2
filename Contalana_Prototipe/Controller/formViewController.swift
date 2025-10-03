@@ -10,10 +10,31 @@ import UIKit
 class formViewController: UIViewController {
     
     let formLogo = UIImageView()
+    let text = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.addSubview(formLogo)
+        view.addSubview(text)
+        
+        UserDefaults.standard.synchronize()
+        let businessExists = UserDefaults.standard.bool(forKey: "businessExists")
+        if businessExists{
+            text.text = "true"
+        }else{
+            text.text = "false"
+        }
+        
+        formLogo.image = UIImage(systemName: "figure.skateboarding")
+        formLogo.translatesAutoresizingMaskIntoConstraints = false
+        text.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            formLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            formLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            text.topAnchor.constraint(equalTo: formLogo.bottomAnchor, constant: 15)
+        ])
         // Do any additional setup after loading the view.
     }
     

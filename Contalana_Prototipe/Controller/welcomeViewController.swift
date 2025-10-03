@@ -7,18 +7,6 @@
 
 import UIKit
 
-
-class NoSelectableTextView: UITextView {
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return false // oculta menú copiar/pegar
-    }
-
-    override var selectedTextRange: UITextRange? {
-        get { return nil } // evita selección
-        set { }
-    }
-}
-
 class welcomeViewController: UIViewController, UITextViewDelegate {
     
     let welcomeLabel = UILabel()
@@ -33,55 +21,62 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         prepareWelcomeUI()
         // Do any additional setup after loading the view.
-        runWelcomeAnimation(blueSquare: welcome_BlueSquare, greenSquare: welcome_GreenSquare, title: welcomeLabel, subtitle: welcomeSubtitleLabel, button: welcomeButton)
+        runWelcomeAnimation(blueSquare: welcome_BlueSquare, greenSquare: welcome_GreenSquare, title: welcomeLabel, subtitle: welcomeSubtitleLabel, button: welcomeButton, terms: welcomeTermsConditions, signIn: welcomeSignIn)
     }
     
     func prepareWelcomeUI(){
-        //WelcomeImage
+        
+        //Background Blue Square
         welcome_BlueSquare.image = UIImage(named: "square_lightblue")
         welcome_BlueSquare.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcome_BlueSquare)
+
         NSLayoutConstraint.activate([
-            welcome_BlueSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 85),
-            welcome_BlueSquare.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: 135),
-            welcome_BlueSquare.widthAnchor.constraint(equalToConstant: 750),
-            welcome_BlueSquare.heightAnchor.constraint(equalToConstant: 750)
+            // TAMAÑO: El ancho y el alto serán el 200% del ancho de la vista contenedora (view).
+            welcome_BlueSquare.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
+            welcome_BlueSquare.heightAnchor.constraint(equalTo: welcome_BlueSquare.widthAnchor), // Siempre será un cuadrado
+
+            // POSICIÓN Y MARGEN:
+            // Borde superior 10% del alto total de la vista contenedora
+            welcome_BlueSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.10),
+            // El borde derecho se fija al borde derecho de la vista, más un margen del 20% del ancho de la vista.
+            welcome_BlueSquare.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: view.bounds.width * 0.5)
         ])
         
+        //Background Green Square
         welcome_GreenSquare.image = UIImage(named: "square_lightgreen")
         welcome_GreenSquare.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcome_GreenSquare)
-        NSLayoutConstraint.activate([
-            welcome_GreenSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300),
-            welcome_GreenSquare.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant: 80),
-            welcome_GreenSquare.widthAnchor.constraint(equalToConstant: 750),
-            welcome_GreenSquare.heightAnchor.constraint(equalToConstant: 750)
-        ])
         
+        NSLayoutConstraint.activate([
+            welcome_GreenSquare.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2),
+            welcome_GreenSquare.heightAnchor.constraint(equalTo: welcome_GreenSquare.widthAnchor),
+            welcome_GreenSquare.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.25 ),
+            welcome_GreenSquare.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.2)
+        ])
         
         //WelcomeLabel
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "welcome.title".localized
         welcomeLabel.textColor = UIColor.white
-        welcomeLabel.font = UIFont.systemFont(ofSize: 48, weight: .bold)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 44, weight: .heavy)
         welcomeLabel.textAlignment = .center
         welcomeLabel.numberOfLines = 0
         welcomeLabel.lineBreakMode = .byWordWrapping
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        //Constraints Welcome Subtitle Label
+        //Constraints WelcomeLabel
         NSLayoutConstraint.activate([
-            welcomeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40),
-            welcomeLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -40),
+            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.45),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -230)
+            welcomeLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
         
         //WelcomeSubtitleLabel
         view.addSubview(welcomeSubtitleLabel)
         welcomeSubtitleLabel.text = "welcome.subtitle".localized
         welcomeSubtitleLabel.textColor = UIColor.white
-        welcomeSubtitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        welcomeSubtitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         welcomeSubtitleLabel.textAlignment = .center // Centrar texto dentro del label
         welcomeSubtitleLabel.numberOfLines = 0
         welcomeSubtitleLabel.lineBreakMode = .byWordWrapping
@@ -89,26 +84,30 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         //Constraints Welcome Subtitle Label
         NSLayoutConstraint.activate([
-            welcomeSubtitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 40),
-            welcomeSubtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -40),
+            welcomeSubtitleLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: view.bounds.height * 0.02),
             welcomeSubtitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeSubtitleLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -175)
+            welcomeSubtitleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.875)
         ])
         
         //Welcome Button
         view.addSubview(welcomeButton)
         welcomeButton.setTitle("welcome.button".localized, for: .normal)
-        welcomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        welcomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         welcomeButton.setTitleColor(.white, for: .normal)
         welcomeButton.backgroundColor = .init(named: "CL_darkBlue")
         welcomeButton.layer.cornerRadius = 18
         welcomeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Welcome Button Actions
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
+        welcomeButton.addGestureRecognizer(tapGesture)
+        welcomeButton.isUserInteractionEnabled = true
 
         // Constraints WelcomeButton
         NSLayoutConstraint.activate([
+            welcomeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(view.bounds.height * 0.115)),
             welcomeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
-            welcomeButton.widthAnchor.constraint(equalToConstant: 350),
+            welcomeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             welcomeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
@@ -122,7 +121,7 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         welcomeTermsConditions.isSelectable = true // necesario para que los links funcionen
         
         let termsText = NSMutableAttributedString(string: "welcome.terms".localized, attributes: [
-            .font: UIFont.systemFont(ofSize: 12, weight: .light),
+            .font: UIFont.systemFont(ofSize: 12, weight: .regular),
             .foregroundColor: UIColor.white
         ])
         
@@ -130,11 +129,11 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         let tappablePrivacyText = ("welcome.terms".localized as NSString).range(of: "welcome.terms.policy".localized)
         
-        termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue , range: tappableTermsText)
-        termsText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: tappableTermsText)
+        termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue, range: tappableTermsText)
+        termsText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .regular), range: tappableTermsText)
         termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappableTermsText)
-        termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue , range: tappablePrivacyText)
-        termsText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: tappablePrivacyText)
+        termsText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: tappablePrivacyText)
+        termsText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .regular), range: tappablePrivacyText)
         termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappablePrivacyText)//Modificar el link al agregar la pólitica
         
         let paragraph = NSMutableParagraphStyle()
@@ -154,10 +153,9 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         //Constraints Welcome Terms and Conditions
         NSLayoutConstraint.activate([
-            welcomeTermsConditions.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 20),
-            welcomeTermsConditions.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
+            welcomeTermsConditions.topAnchor.constraint(equalTo: welcomeButton.bottomAnchor, constant: view.bounds.height * 0.015),
             welcomeTermsConditions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeTermsConditions.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            welcomeTermsConditions.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
         ])
         
         //Sign In
@@ -170,14 +168,14 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         welcomeSignIn.isSelectable = true // necesario para que los links funcionen
         
         let signInText = NSMutableAttributedString(string: "welcome.signin".localized, attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .semibold),
+            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
             .foregroundColor: UIColor.white
         ])
         
         let tappableSignInText = ("welcome.signin".localized as NSString).range(of: "welcome.signin.label".localized)
         
         signInText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue, range: tappableSignInText)
-        signInText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 16), range: tappableSignInText)
+        signInText.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold), range: tappableSignInText)
         signInText.addAttribute(.link, value: "action://navigatorSegue", range: tappableSignInText)
         
         signInText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: signInText.length))
@@ -192,24 +190,19 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         welcomeSignIn.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeSignIn)
         
-        //Constraints Welcome Terms and Conditions
+        //Constraints Signin
         NSLayoutConstraint.activate([
-            welcomeSignIn.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 50),
-            welcomeSignIn.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -50),
             welcomeSignIn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            welcomeSignIn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
+            welcomeSignIn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            welcomeSignIn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(view.bounds.height * 0.04))
         ])
-        
-        //Welcome Button Actions
-        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
-        welcomeButton.addGestureRecognizer(tapGesture)
-        welcomeButton.isUserInteractionEnabled = true
 
     }
     
     @objc func buttonTapped() {
         print("Botón presionado")
         self.performSegue(withIdentifier: "welcomeSegue", sender: self)
+        
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
@@ -219,15 +212,17 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
                 return false // ya manejamos la interacción
             }
             return true
-        }
+    }
     
     
-    func runWelcomeAnimation(blueSquare: UIImageView, greenSquare: UIImageView, title: UILabel, subtitle: UILabel, button: UIButton) {
+    func runWelcomeAnimation(blueSquare: UIImageView, greenSquare: UIImageView, title: UILabel, subtitle: UILabel, button: UIButton, terms: NoSelectableTextView, signIn: NoSelectableTextView) {
         
         // Estado inicial (invisible)
         title.alpha = 0
         subtitle.alpha = 0
         button.alpha = 0
+        terms.alpha = 0
+        signIn.alpha = 0
         
         // Animación del cuadrado azul
         UIView.animate(withDuration: 0.8, animations: {
@@ -242,8 +237,13 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
                     subtitle.alpha = 1
                 }) { _ in
                     // Finalmente el botón
-                    UIView.animate(withDuration: 0.5) {
+                    UIView.animate(withDuration: 0.5, animations: {
                         button.alpha = 1
+                        terms.alpha = 1
+                    }) { _ in
+                        UIView.animate(withDuration: 0.5){
+                            signIn.alpha = 1
+                        }
                     }
                 }
             }
@@ -255,9 +255,16 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
             }
         }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-//        let destinationViewController = segue.destination as! informativeViewController
-//    }
+    class NoSelectableTextView: UITextView {
+        override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+            return false // oculta menú copiar/pegar
+        }
+
+        override var selectedTextRange: UITextRange? {
+            get { return nil } // evita selección
+            set { }
+        }
+    }
     
 }
 

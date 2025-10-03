@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Utb-Lb-ToC">
             <objects>
-                <navigationController navigationBarHidden="YES" id="fbN-8i-OCh" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="fbN-8i-OCh" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ffv-27-ON8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -27,7 +27,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="welcomeViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="welcomeViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
         <!--Informative View Controller-->
         <scene sceneID="4J9-mR-ZL2">
             <objects>
-                <viewController id="5sU-54-9bJ" customClass="informativeViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="5sU-54-9bJ" customClass="informativeViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5MH-ya-p3Q">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,8 +73,7 @@
         <!--bName View Controller-->
         <scene sceneID="8sE-oG-MIW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GKY-HN-ap1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="ecO-oe-hvc" userLabel="bName View Controller" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="ecO-oe-hvc" userLabel="bName View Controller" customClass="bNameViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJA-sb-HNH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,16 +81,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="beO-O2-03M" kind="show" id="5dX-6J-HEK"/>
+                        <segue destination="beO-O2-03M" kind="show" identifier="bNameSegue" id="5dX-6J-HEK"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKY-HN-ap1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1792" y="-28"/>
         </scene>
         <!--form View Controller-->
         <scene sceneID="oQX-3M-uCI">
             <objects>
-                <viewController id="beO-O2-03M" userLabel="form View Controller" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="formViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="beO-O2-03M" userLabel="form View Controller" customClass="formViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Us-Q6-v1P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,14 +101,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="81M-Kn-qmF"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2666" y="-18"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="gRn-BW-twM">
             <objects>
-                <viewController id="drl-vy-DRj" userLabel="Terms View Controller" customClass="navigatorViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="drl-vy-DRj" userLabel="Terms View Controller" customClass="navigatorViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cnv-qm-DbR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

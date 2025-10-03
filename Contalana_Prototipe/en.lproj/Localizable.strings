@@ -8,7 +8,7 @@
 
 /*WELCOME INTERFACE*/
 "welcome.title" = "Welcome to Contalana";
-"welcome.subtitle" = "Let's achieve all the goals and objectives for your business together";
+"welcome.subtitle" = "Let's achieve all the goals and objectives for your business together!";
 "welcome.button" = "Let's do it";
 "welcome.terms" = "By continuing, you agree to Contalana's Terms and Conditions and accept our Privacy Policy.";
 "welcome.terms.label" = "Contalana's Terms and Conditions";
@@ -30,6 +30,7 @@
 "bName.subtitle" = "What name would you like us to use to refer to your business?";
 "bName.button" = "I like this one";
 "bName.TextField.hint" = "\"EZ Market\"";
-"bName.Alert.title" = "Warning";
-"bName.Alert.message" = "Please, enter a valid name for your business";
+"bName.Alert.title" = "Please, enter a valid name for your business";
+"bName.Alert.empty" = "Business name is Empty";
+"bName.Alert.notValid" = "Use between 5 and 32 characters, including letters, numbers, and the symbols: . _ $ & /";
 "bName.Alert.button" = "Ok";

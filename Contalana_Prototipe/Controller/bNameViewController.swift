@@ -7,19 +7,21 @@
 
 import UIKit
 
-class bNameViewController: UIViewController {
+class bNameViewController: UIViewController, UITextFieldDelegate {
     
     let bNameTitleLabel = UILabel()
     let bNameSubLabel = UILabel()
     let bNameButton = UIButton(type: .system)
     let bNameTextField = UITextField()
+    //Fechas
+    let dateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         setupBNameUI()
-
+        bNameTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -106,31 +108,69 @@ class bNameViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
         bNameButton.addGestureRecognizer(tapGesture)
         bNameButton.isUserInteractionEnabled = true
-        
+    
+        let tapGestureView = UITapGestureRecognizer(target: self, action:#selector(hideKeyboard))
+        view.addGestureRecognizer(tapGestureView)
+    }
+    
+    @objc func hideKeyboard(){
+        view.endEditing(true)
     }
     
     @objc func buttonTapped() {
         print("Botón bName presionado")
+        
+        let bNameRegex = "^[A-Z0-9a-z._$&/\"']{1}[A-Z0-9a-z._$&/\"' ]{3,30}[A-Z0-9a-z._$&/\"']{1}$"
+        let bNameTest = NSPredicate(format: "SELF MATCHES %@", bNameRegex)
+        var errorMessage = ""
+        
         if let businessName = bNameTextField.text{
+            
             if businessName.isEmpty{
-                let emptyTextField = UIAlertController(title: "bName.Alert.title".localized, message: "bName.Alert.message".localized, preferredStyle: .alert)
-                let bNameAlertButton = UIAlertAction(title: "bName.Alert.button".localized, style: .default, handler: nil)
                 
-                emptyTextField.addAction(bNameAlertButton)
-                self.present(emptyTextField, animated: true, completion: nil)
+                errorMessage = "bName.Alert.empty".localized
+                
+            }else if !(bNameTest.evaluate(with: businessName)){
+                
+                errorMessage = "bName.Alert.notValid".localized
+                
+            }else if businessName.count > 32 || businessName.count < 5 {
+                
+                errorMessage = "bName.Alert.notValid".localized
             }
         }
-        //self.performSegue(withIdentifier: "welcomeSegue", sender: self)
+            
+        if !errorMessage.isEmpty{
+            
+                let emptyFieldAlert = UIAlertController(title: "bName.Alert.title".localized, message: errorMessage, preferredStyle: .alert)
+                
+                let alertButton = UIAlertAction(title: "bName.Alert.button".localized, style: .default, handler: nil)
+                emptyFieldAlert.addAction(alertButton)
+                
+                self.present(emptyFieldAlert, animated: true, completion: nil)
+        }else{
+            UserDefaults.standard.set(true, forKey: "businessExists")
+            self.performSegue(withIdentifier: "bNameSegue", sender: self)
+            //let nameRegisterDate = Date()
+            //UserDefaults.standard.set(dateFormatter.string(from: nameRegisterDate), forKey: "bnameRegisterDate")
+            
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
+
+extension bNameViewController {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 1. Oculta el teclado.
+        // El método .resignFirstResponder() hace que el campo de texto renuncie
+        // a ser el "primer respondedor" (el que recibe la entrada de texto),
+        // lo que automáticamente cierra el teclado virtual.
+        textField.resignFirstResponder()
+        
+        // 2. Devuelve 'true' para indicar que has manejado el evento.
+        return true
+    }
+}
+
+

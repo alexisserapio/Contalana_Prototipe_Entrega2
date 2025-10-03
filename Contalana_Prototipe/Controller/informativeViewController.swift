@@ -1,4 +1,3 @@
-//
 //  informativeViewController.swift
 //  Contalana_Prototipe
 //
