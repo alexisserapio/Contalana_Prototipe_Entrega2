@@ -13,6 +13,7 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
     let bNameSubLabel = UILabel()
     let bNameButton = UIButton(type: .system)
     let bNameTextField = UITextField()
+    var businessName: String = ""
     //Fechas
     let dateFormatter = DateFormatter()
 
@@ -27,6 +28,9 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
     
     //WelcomeLabel
     func setupBNameUI(){
+        
+        view.backgroundColor = UIColor.backgroundTint
+        
         //Bussiness Name View Title
         bNameTitleLabel.text = "bName.title".localized
         bNameTitleLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
@@ -122,24 +126,24 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
         
         let bNameRegex = "^[A-Z0-9a-z._$&/\"']{1}[A-Z0-9a-z._$&/\"' ]{3,30}[A-Z0-9a-z._$&/\"']{1}$"
         let bNameTest = NSPredicate(format: "SELF MATCHES %@", bNameRegex)
+        
+        businessName = bNameTextField.text!
         var errorMessage = ""
         
-        if let businessName = bNameTextField.text{
             
-            if businessName.isEmpty{
-                
-                errorMessage = "bName.Alert.empty".localized
-                
-            }else if !(bNameTest.evaluate(with: businessName)){
-                
-                errorMessage = "bName.Alert.notValid".localized
-                
-            }else if businessName.count > 32 || businessName.count < 5 {
-                
-                errorMessage = "bName.Alert.notValid".localized
-            }
+        if businessName.isEmpty{
+            
+            errorMessage = "bName.Alert.empty".localized
+            
+        }else if !(bNameTest.evaluate(with: businessName)){
+            
+            errorMessage = "bName.Alert.notValid".localized
+            
+        }else if businessName.count > 32 || businessName.count < 5 {
+            
+            errorMessage = "bName.Alert.notValid".localized
         }
-            
+        
         if !errorMessage.isEmpty{
             
                 let emptyFieldAlert = UIAlertController(title: "bName.Alert.title".localized, message: errorMessage, preferredStyle: .alert)
@@ -155,6 +159,13 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
             //UserDefaults.standard.set(dateFormatter.string(from: nameRegisterDate), forKey: "bnameRegisterDate")
             
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        let destinationViewController = segue.destination as! formViewController
+        destinationViewController.businessNameForm = self.businessName
+            
     }
     
 }

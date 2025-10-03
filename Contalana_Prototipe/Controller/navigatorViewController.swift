@@ -15,6 +15,8 @@ class navigatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.backgroundTint
+        
         view.addSubview(buildingImage)
         view.addSubview(buildingLabel)
         buildingImage.image = UIImage(systemName: "figure.skateboarding")

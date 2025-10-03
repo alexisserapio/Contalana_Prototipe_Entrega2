@@ -39,6 +39,8 @@ class informativeViewController: UIViewController {
     }
     
     func setupInformativeUI() {
+        
+        view.backgroundColor = UIColor.backgroundTint
         // Informative Button
         view.addSubview(informativeButton)
         informativeButton.setTitle("informative.button".localized, for: .normal)

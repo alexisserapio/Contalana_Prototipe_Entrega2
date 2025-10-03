@@ -26,6 +26,8 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
     
     func prepareWelcomeUI(){
         
+        view.backgroundColor = UIColor.backgroundTint
+        
         //Background Blue Square
         welcome_BlueSquare.image = UIImage(named: "square_lightblue")
         welcome_BlueSquare.translatesAutoresizingMaskIntoConstraints = false
