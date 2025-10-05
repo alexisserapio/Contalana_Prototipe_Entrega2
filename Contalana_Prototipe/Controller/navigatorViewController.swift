@@ -6,43 +6,122 @@
 //
 
 import UIKit
+import WebKit
 
-class navigatorViewController: UIViewController {
+class navigatorViewController: UIViewController, WKNavigationDelegate {
     
-    let buildingImage = UIImageView()
-    let buildingLabel = UILabel()
+    let retryLabel = UILabel()
+    var navigatorImage = UIImageView()
+    var actI : UIActivityIndicatorView!
+    var webView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.backgroundTint
         
-        view.addSubview(buildingImage)
-        view.addSubview(buildingLabel)
-        buildingImage.image = UIImage(systemName: "figure.skateboarding")
-        buildingImage.translatesAutoresizingMaskIntoConstraints = false
-        buildingImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        buildingImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        // --- WebView
+        webView = WKWebView(frame:view.bounds)
+        webView.navigationDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
         
-        buildingLabel.text = "Work in Progress, see ya soon!"
-        buildingLabel.translatesAutoresizingMaskIntoConstraints = false
-        buildingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         NSLayoutConstraint.activate([
-            buildingLabel.topAnchor.constraint(equalTo: buildingImage.bottomAnchor, constant: 15)
-            ])
-        // Do any additional setup after loading the view.
+            webView.topAnchor.constraint(equalTo: view.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        // --- Controles de reintento
+        view.addSubview(navigatorImage)
+        view.addSubview(retryLabel)
+        navigatorImage.translatesAutoresizingMaskIntoConstraints = false
+        retryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        navigatorImage.image = UIImage(systemName: "arrow.counterclockwise.circle.fill")
+        navigatorImage.tintColor = UIColor.clLightGreen
+        navigatorImage.isHidden = true
+        
+        retryLabel.text = "Reintentar Conexión"
+        retryLabel.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            navigatorImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            navigatorImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            retryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            retryLabel.topAnchor.constraint(equalTo: navigatorImage.bottomAnchor, constant: view.bounds.height * 0.02)
+        ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(retryTapped))
+        retryLabel.addGestureRecognizer(tapGesture)
+        navigatorImage.addGestureRecognizer(tapGesture)
+        retryLabel.isUserInteractionEnabled = true
+        navigatorImage.isUserInteractionEnabled = true
+        
+        // --- Activity Indicator
+        actI = UIActivityIndicatorView(style: .large)
+        actI.center = view.center
+        actI.hidesWhenStopped = true
+        view.addSubview(actI)
+        
+        // --- Botón de cerrar
+        let botonIzquierdo = UIBarButtonItem(
+            image: UIImage(systemName: "chevron.backward"),
+            style: .plain,
+            target: self,
+            action: #selector(cerrarVista)
+        )
+        self.navigationItem.leftBarButtonItem = botonIzquierdo
     }
     
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkConnectionAndProceed()
     }
-    */
-
+    
+    func checkConnectionAndProceed() {
+        actI.startAnimating()
+        
+        if InternetMonitor.shared.hayConexion {
+            //  Mostrar WebView
+            webView.isHidden = false
+            navigatorImage.isHidden = true
+            retryLabel.isHidden = true
+            
+            if let url = URL(string: "https://github.com/alexisserapio") {
+                let request = URLRequest(url:url)
+                webView.load(request)
+            }
+            
+        } else {
+            //  No hay conexión: oculto el webView y muestro botón de retry
+            actI.stopAnimating()
+            webView.isHidden = true
+            navigatorImage.isHidden = false
+            retryLabel.isHidden = false
+        }
+    }
+    
+    // --- WKWebView Delegates
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: any Error) {
+        actI.stopAnimating()
+        webView.isHidden = true
+        navigatorImage.isHidden = false
+        retryLabel.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        actI.stopAnimating()
+    }
+    
+    // --- Botones
+    @objc func cerrarVista() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc func retryTapped() {
+        checkConnectionAndProceed()
+    }
 }
+
