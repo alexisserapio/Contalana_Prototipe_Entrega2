@@ -133,10 +133,10 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         termsText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue, range: tappableTermsText)
         termsText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .regular), range: tappableTermsText)
-        termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappableTermsText)
+        termsText.addAttribute(.link, value: "browser://navigatorSegue", range: tappableTermsText)
         termsText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: tappablePrivacyText)
         termsText.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .regular), range: tappablePrivacyText)
-        termsText.addAttribute(.link, value: "action://navigatorSegue", range: tappablePrivacyText)//Modificar el link al agregar la pólitica
+        termsText.addAttribute(.link, value: "browser://navigatorSegue", range: tappablePrivacyText)//Modificar el link al agregar la pólitica
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
@@ -178,7 +178,7 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
         
         signInText.addAttribute(.foregroundColor, value: UIColor.clDarkBlue, range: tappableSignInText)
         signInText.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold), range: tappableSignInText)
-        signInText.addAttribute(.link, value: "action://navigatorSegue", range: tappableSignInText)
+        signInText.addAttribute(.link, value: "signin://signInSegue", range: tappableSignInText)
         
         signInText.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: signInText.length))
         
@@ -208,9 +208,12 @@ class welcomeViewController: UIViewController, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-            if URL.scheme == "action" {
+            if URL.scheme == "browser" {
                 // Ejecuta el segue con el identifier que hayas definido en el Storyboard
                 performSegue(withIdentifier: "navigatorSegue", sender: nil)
+                return false // ya manejamos la interacción
+            }else if URL.scheme == "signin"{
+                performSegue(withIdentifier: "signInSegue", sender: nil)
                 return false // ya manejamos la interacción
             }
             return true
