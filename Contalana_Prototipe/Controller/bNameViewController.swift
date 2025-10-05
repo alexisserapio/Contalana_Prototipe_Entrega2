@@ -154,6 +154,7 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
                 self.present(emptyFieldAlert, animated: true, completion: nil)
         }else{
             UserDefaults.standard.set(true, forKey: "businessExists")
+            UserDefaults.standard.setValue(businessName, forKey: "businessName")
             self.performSegue(withIdentifier: "bNameSegue", sender: self)
             //let nameRegisterDate = Date()
             //UserDefaults.standard.set(dateFormatter.string(from: nameRegisterDate), forKey: "bnameRegisterDate")
@@ -161,12 +162,12 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         let destinationViewController = segue.destination as! formViewController
         destinationViewController.businessNameForm = self.businessName
             
-    }
+    }*/
     
 }
 

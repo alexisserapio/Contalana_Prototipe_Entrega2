@@ -19,15 +19,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let rootViewController: UIViewController
         let businessExists = UserDefaults.standard.bool(forKey: "businessExists")
+        let formAnswered = UserDefaults.standard.bool(forKey: "formAnswered")
         
-        if !businessExists{
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                rootViewController = storyboard.instantiateViewController(withIdentifier: "welcomeViewController")
-        }else{
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            rootViewController = storyboard.instantiateViewController(withIdentifier: "formViewController")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if !businessExists {
+            rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "welcomeViewController")
+        } else if !formAnswered { // Uso un 'else if' para hacerlo más legible
+            rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "formViewController")
+        } else {
+            rootViewController = mainStoryboard.instantiateViewController(withIdentifier: "mainSceneViewController")
         }
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let ventana = UIWindow(windowScene: windowScene)//Se instancia una ventana y la desempaqueta en el contexto

@@ -12,7 +12,7 @@ class formViewController: UIViewController {
     let formLogo = UIImageView()
     let text = UILabel()
     let formButton = UIButton()
-    var businessNameForm: String = ""
+    let textWork = UILabel()
 
     override func viewDidLoad() {
     
@@ -27,12 +27,14 @@ class formViewController: UIViewController {
         
         view.addSubview(formLogo)
         view.addSubview(text)
+        view.addSubview(textWork)
         
         UserDefaults.standard.synchronize()
         
         let businessExists = UserDefaults.standard.bool(forKey: "businessExists")
+        let businessName = UserDefaults.standard.string(forKey: "businessName")
         if businessExists{
-            text.text = businessNameForm
+            text.text = businessName
         }else{
             text.text = "false"
         }
@@ -41,6 +43,11 @@ class formViewController: UIViewController {
         //formLogo.contentMode = .scaleAspectFit
         formLogo.translatesAutoresizingMaskIntoConstraints = false
         text.translatesAutoresizingMaskIntoConstraints = false
+        textWork.translatesAutoresizingMaskIntoConstraints = false
+        textWork.text = "Hola, aquí va un Formulario para conocer más datos del negocio, Trabajo en progreso..."
+        textWork.textAlignment = .center // Centrar texto dentro del label
+        textWork.numberOfLines = 0
+        textWork.lineBreakMode = .byWordWrapping
         
         NSLayoutConstraint.activate([
             formLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -48,7 +55,11 @@ class formViewController: UIViewController {
             formLogo.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),//.4
             formLogo.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075),//.15
             text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            text.topAnchor.constraint(equalTo: formLogo.bottomAnchor, constant: 15)
+            text.topAnchor.constraint(equalTo: formLogo.bottomAnchor, constant: 15),
+            textWork.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textWork.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            textWork.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+            
         ])
         
         // Informative Button
@@ -73,7 +84,8 @@ class formViewController: UIViewController {
     }
     
     @objc func buttonTapped(){
-        self.performSegue(withIdentifier: "welcomeSegue", sender: self)
+        UserDefaults.standard.set(true, forKey: "formAnswered")
+        self.performSegue(withIdentifier: "formSegue", sender: self)
     }
     
     /*

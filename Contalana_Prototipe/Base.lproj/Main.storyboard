@@ -91,7 +91,6 @@
         <!--form View Controller-->
         <scene sceneID="oQX-3M-uCI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="formViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="beO-O2-03M" userLabel="form View Controller" customClass="formViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Us-Q6-v1P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -100,9 +99,61 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="81M-Kn-qmF"/>
+                    <connections>
+                        <segue destination="mbh-Dm-bEr" kind="presentation" identifier="formSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="iAG-bC-W2h"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQF-Mn-Pmp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2666" y="-18"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="PTr-JC-ySC">
+            <objects>
+                <viewController title="Main" id="dI9-nS-SNz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="li7-T6-N1X">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dgJ-EM-xKu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="lCS-l2-C94"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3U-Dn-NvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5011" y="-1213"/>
+        </scene>
+        <!--Gestión-->
+        <scene sceneID="axO-kM-aNg">
+            <objects>
+                <viewController id="jkB-3f-19W" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="USQ-LY-oUO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KmK-3W-Rui"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="2" title="Gestión" id="yfe-11-J9A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rD-Ax-aEM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5010" y="427"/>
+        </scene>
+        <!--Inventario-->
+        <scene sceneID="Gy4-IB-K03">
+            <objects>
+                <viewController title="Inventario" id="9hL-ea-aRi" customClass="mainSceneViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VBp-zY-FEX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e8r-bo-XtA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="1" title="Inventario" id="wYM-ax-abn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDh-oV-KbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5010" y="-423"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="gRn-BW-twM">
@@ -119,6 +170,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dC3-Hn-7eB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="166" y="694"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="crW-px-ly8">
+            <objects>
+                <tabBarController storyboardIdentifier="mainSceneViewController" automaticallyAdjustsScrollViewInsets="NO" id="mbh-Dm-bEr" customClass="tabBarController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="laM-nT-dRb"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="VTB-35-DUk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9hL-ea-aRi" kind="relationship" relationship="viewControllers" id="P0L-YJ-Z3R"/>
+                        <segue destination="dI9-nS-SNz" kind="relationship" relationship="viewControllers" id="3T7-m1-G6y"/>
+                        <segue destination="jkB-3f-19W" kind="relationship" relationship="viewControllers" id="eE5-ua-QXH"/>
+                        <segue destination="ftB-9h-anr" kind="relationship" relationship="viewControllers" id="MZp-zq-Yne"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i3y-0p-ugd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3888" y="-28"/>
+        </scene>
+        <!--Planeación-->
+        <scene sceneID="tG0-la-GLe">
+            <objects>
+                <viewController title="Planeación" id="ftB-9h-anr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VF8-oI-O5z">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="kVc-gu-X57"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="3" title="Planeación" id="efS-Us-92D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kef-va-ENa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5010" y="1301"/>
         </scene>
     </scenes>
     <resources>

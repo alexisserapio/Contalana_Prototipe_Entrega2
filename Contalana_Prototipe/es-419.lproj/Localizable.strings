@@ -35,3 +35,13 @@
 "bName.Alert.notValid" = "Usa entre 5 y 32 caracteres, incluyendo letras, números y los símbolos: . _ $ & /";
 "bName.Alert.button" = "Aceptar";
 
+/*TAB BAR*/
+
+"item.one" = "Inicio";
+"item.two" = "Invantario";
+"item.three" = "Gestión";
+"item.four" = "Planeación";
+
+/*MAIN SCREEN*/
+"mainScene.welcome" = "Bienvenido %@";
+
