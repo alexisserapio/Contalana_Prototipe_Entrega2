@@ -89,7 +89,7 @@ class navigatorViewController: UIViewController, WKNavigationDelegate {
             navigatorImage.isHidden = true
             retryLabel.isHidden = true
             
-            if let url = URL(string: "https://github.com/alexisserapio") {
+            if let url = URL(string: "https://alexisserapio.github.io/") {
                 let request = URLRequest(url:url)
                 webView.load(request)
             }
