@@ -11,6 +11,7 @@ class inventoryViewController: UIViewController {
     
     let inventoryLabel = UILabel()
     let noProductsLabel = UILabel()
+    let addProductButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +51,8 @@ class inventoryViewController: UIViewController {
         let businessName = UserDefaults.standard.string(forKey: "businessName")
         
         view.addSubview(inventoryLabel)
-        view.addSubview(noProductsLabel)
         
         inventoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        noProductsLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        noProductsLabel.text = "No hay productos en el inventario"
-        noProductsLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         
         inventoryLabel.text = String(format: "inventoryScene.welcome".localized, businessName!)
         inventoryLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -65,8 +61,34 @@ class inventoryViewController: UIViewController {
         NSLayoutConstraint.activate([
             inventoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
             inventoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
+        ])
+        
+        view.addSubview(noProductsLabel)
+        
+        noProductsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        noProductsLabel.text = "No hay productos en el inventario"
+        noProductsLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        
+        NSLayoutConstraint.activate([
             noProductsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             noProductsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        view.addSubview(addProductButton)
+        
+        addProductButton.translatesAutoresizingMaskIntoConstraints = false
+        addProductButton.setTitle("Añadir producto", for: .normal)
+        addProductButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        addProductButton.setTitleColor(.white, for: .normal)
+        addProductButton.backgroundColor = .init(named: "CL_lightBlue")
+        addProductButton.layer.cornerRadius = 18
+        
+        NSLayoutConstraint.activate([
+            addProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addProductButton.topAnchor.constraint(equalTo: noProductsLabel.bottomAnchor, constant: view.bounds.height * 0.02),
+            addProductButton.widthAnchor.constraint(equalToConstant: 200),
+            addProductButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
