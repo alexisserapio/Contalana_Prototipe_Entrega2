@@ -8,7 +8,33 @@
 import Foundation
 import CoreData
 
-func createDB(){
-    let dataBaseCreated = UserDefaults.standard
-    guard dataBaseCreated.bool(forKey: "dataBaseCreated") != true else { return }
+
+class DataManager : NSObject {
+    
+    // MARK: - Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Mascotas")
+        
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        
+        return container
+        
+    }()
+    
+    
+    func allProducts() -> [Product] {
+        let request = Product.fetchRequest()
+        do {
+            return try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetch mascotas: \(error)")
+            return []
+        }
+    }
 }

@@ -9,11 +9,12 @@ import UIKit
 
 class mainSceneViewController: UIViewController {
     
-    let welcomeLabel = UILabel()
+    let mainLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -21,16 +22,16 @@ class mainSceneViewController: UIViewController {
         
         view.backgroundColor = UIColor.backgroundTint
         
-        view.addSubview(welcomeLabel)
+        view.addSubview(mainLabel)
         let businessName = UserDefaults.standard.string(forKey: "businessName")
         
-        welcomeLabel.text = String(format: "mainScene.welcome".localized, businessName!)
-        welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        mainLabel.text = String(format: "mainScene.welcome".localized, businessName!)
+        mainLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        mainLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
+            mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
+            mainLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
         ])
         
     }

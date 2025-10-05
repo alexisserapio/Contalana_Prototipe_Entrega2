@@ -155,6 +155,8 @@ class bNameViewController: UIViewController, UITextFieldDelegate {
         }else{
             UserDefaults.standard.set(true, forKey: "businessExists")
             UserDefaults.standard.setValue(businessName, forKey: "businessName")
+            UserDefaults.standard.set(false, forKey: "productExists")
+            
             self.performSegue(withIdentifier: "bNameSegue", sender: self)
             //let nameRegisterDate = Date()
             //UserDefaults.standard.set(dateFormatter.string(from: nameRegisterDate), forKey: "bnameRegisterDate")

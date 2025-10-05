@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="2666" y="-18"/>
         </scene>
-        <!--Main-->
+        <!--Inventory-->
         <scene sceneID="PTr-JC-ySC">
             <objects>
-                <viewController title="Main" id="dI9-nS-SNz" sceneMemberID="viewController">
+                <viewController title="Main" id="dI9-nS-SNz" userLabel="Inventory" customClass="inventoryViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="li7-T6-N1X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3U-Dn-NvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5011" y="-1213"/>
+            <point key="canvasLocation" x="4795" y="-268"/>
         </scene>
         <!--Gestión-->
         <scene sceneID="axO-kM-aNg">
@@ -137,12 +137,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rD-Ax-aEM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5010" y="427"/>
+            <point key="canvasLocation" x="4795" y="422"/>
         </scene>
-        <!--Inventario-->
+        <!--Main-->
         <scene sceneID="Gy4-IB-K03">
             <objects>
-                <viewController title="Inventario" id="9hL-ea-aRi" customClass="mainSceneViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Inventario" id="9hL-ea-aRi" userLabel="Main" customClass="mainSceneViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VBp-zY-FEX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDh-oV-KbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5010" y="-423"/>
+            <point key="canvasLocation" x="4795" y="-937"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="gRn-BW-twM">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kef-va-ENa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5010" y="1301"/>
+            <point key="canvasLocation" x="4795" y="1265"/>
         </scene>
     </scenes>
     <resources>
