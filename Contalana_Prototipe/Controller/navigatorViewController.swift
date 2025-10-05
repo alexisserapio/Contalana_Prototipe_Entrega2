@@ -43,7 +43,7 @@ class navigatorViewController: UIViewController, WKNavigationDelegate {
         navigatorImage.tintColor = UIColor.clLightGreen
         navigatorImage.isHidden = true
         
-        retryLabel.text = "Reintentar Conexión"
+        retryLabel.text = "browser.retry".localized
         retryLabel.isHidden = true
         
         NSLayoutConstraint.activate([

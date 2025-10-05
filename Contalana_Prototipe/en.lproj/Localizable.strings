@@ -8,6 +8,9 @@
 "welcome.signin" = "Already have an account?  Sign In";
 "welcome.signin.label" = "Sign In";
 
+/*BROWSER INTERFACE*/
+"browser.retry" = "No internet connection, Tap to retry";
+
 /*INFORMATIVE INTERFACE*/
 "informative.button" = "Continue";
 "infoPoster.title.one" = "Contalana helps manage my business";
@@ -40,6 +43,8 @@
 "inventoryScene.welcome" = "%@'s Inventory";
 "inventoryScene.noProducts" = "No products in inventory";
 "inventoryScene.addProductButton" = "Add Product";
+"inventoryScene.addedProduct" = "Product Added Successfully!";
+"inventoryScene.text" = "Products in Inventory: true";
 
 /*MANAGEMENT SCREEN*/
 "managementScene.welcome" = "%@'s Management";

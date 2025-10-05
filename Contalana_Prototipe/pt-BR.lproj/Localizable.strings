@@ -8,6 +8,9 @@
 "welcome.signin" = "Já tem uma conta?  Entrar";
 "welcome.signin.label" = "Entrar";
 
+/*BROWSER INTERFACE*/
+"browser.retry" = "Sem conexão com a internet, Toque para tentar novamente";
+
 /*INFORMATIVE INTERFACE*/
 "informative.button" = "Continuar";
 "infoPoster.title.one" = "O Contalana ajuda na gestão do meu negócio";
@@ -40,6 +43,8 @@
 "inventoryScene.welcome" = "Inventário de %@";
 "inventoryScene.noProducts" = "Não há produtos no inventário";
 "inventoryScene.addProductButton" = "Adicionar Produto";
+"inventoryScene.addedProduct" = "Produto adicionado com sucesso!";
+"inventoryScene.text" = "Produtos no Inventário: true";
 
 /*MANAGEMENT SCREEN*/
 "managementScene.welcome" = "Gestão de %@";

@@ -16,6 +16,10 @@
 "welcome.signin" = "¿Ya tienes una cuenta?  Iniciar Sesión";
 "welcome.signin.label" = "Iniciar Sesión";
 
+/*BROWSER INTERFACE*/
+"browser.retry" = "No hay conexión a internet, Toca para reintentar";
+
+
 /*INFORMATIVE INTERFACE*/
 "informative.button" = "Continuar";
 "infoPoster.title.one" = "Contalana ayuda con el manejo de mi negocio";
