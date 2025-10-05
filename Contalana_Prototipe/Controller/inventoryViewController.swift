@@ -12,6 +12,7 @@ class inventoryViewController: UIViewController {
     let inventoryLabel = UILabel()
     let noProductsLabel = UILabel()
     let addProductButton = UIButton(type: .system)
+    let text = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +38,24 @@ class inventoryViewController: UIViewController {
         let businessName = UserDefaults.standard.string(forKey: "businessName")
         
         view.addSubview(inventoryLabel)
+        view.addSubview(text)
         
         inventoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        text.translatesAutoresizingMaskIntoConstraints = false
         
         inventoryLabel.text = String(format: "inventoryScene.welcome".localized, businessName!)
         inventoryLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         inventoryLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        text.text = "inventoryScene.text".localized
+        text.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        
         NSLayoutConstraint.activate([
             inventoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
             inventoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
-            inventoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75)
+            inventoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            text.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
     }
@@ -75,7 +83,7 @@ class inventoryViewController: UIViewController {
         
         noProductsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        noProductsLabel.text = "inventory.noProducts".localized
+        noProductsLabel.text = "inventoryScene.noProducts".localized
         noProductsLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         
         NSLayoutConstraint.activate([

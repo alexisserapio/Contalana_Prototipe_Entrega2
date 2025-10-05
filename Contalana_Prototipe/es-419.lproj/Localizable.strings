@@ -49,6 +49,8 @@
 "inventoryScene.welcome" = "Inventario de %@";
 "inventoryScene.noProducts" = "No hay productos en el inventario";
 "inventoryScene.addProductButton" = "Añadir Producto";
+"inventoryScene.addedProduct" = "Producto Añadido Satisfactioriamente!";
+"inventoryScene.text" = "Productos en Inventario: true";
 
 /*MANAGEMENT SCREEN*/
 "managementScene.welcome" = "Gestión de %@";

@@ -10,11 +10,14 @@ import UIKit
 class addProductViewController: UIViewController {
     
     let formButton = UIButton(type: .system)
+    let addedLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: "productExists")
         
+        
+        view.backgroundColor = UIColor.backgroundTint
         // Informative Button
         view.addSubview(formButton)
         formButton.setTitle("informative.button".localized, for: .normal)
@@ -30,13 +33,19 @@ class addProductViewController: UIViewController {
             formButton.widthAnchor.constraint(equalToConstant: 350),
             formButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-
-//        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
-//        formButton.addGestureRecognizer(tapGesture)
-//        formButton.isUserInteractionEnabled = true
+        
+        view.addSubview(addedLabel)
+        
+        addedLabel.text = "inventoryScene.addedProduct".localized
+        addedLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            addedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addedLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         let botonIzquierdo = UIBarButtonItem(
-                    image: UIImage(systemName: "xmark"),
+                    image: UIImage(systemName: "chevron.backward"),
                     style: .plain,
                     target: self,
                     action: #selector(cerrarVista)
