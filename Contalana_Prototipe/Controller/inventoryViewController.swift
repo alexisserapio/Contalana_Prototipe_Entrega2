@@ -75,7 +75,7 @@ class inventoryViewController: UIViewController {
         
         noProductsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        noProductsLabel.text = "No hay productos en el inventario"
+        noProductsLabel.text = "inventory.noProducts".localized
         noProductsLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         
         NSLayoutConstraint.activate([
@@ -86,7 +86,7 @@ class inventoryViewController: UIViewController {
         view.addSubview(addProductButton)
         
         addProductButton.translatesAutoresizingMaskIntoConstraints = false
-        addProductButton.setTitle("Añadir producto", for: .normal)
+        addProductButton.setTitle("inventoryScene.addProductButton".localized, for: .normal)
         addProductButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         addProductButton.setTitleColor(.white, for: .normal)
         addProductButton.backgroundColor = .init(named: "CL_lightBlue")

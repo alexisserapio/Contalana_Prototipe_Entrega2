@@ -47,4 +47,12 @@
 
 /*INVENTORY SCREEN*/
 "inventoryScene.welcome" = "Inventario de %@";
+"inventoryScene.noProducts" = "No hay productos en el inventario";
+"inventoryScene.addProductButton" = "Añadir Producto";
+
+/*MANAGEMENT SCREEN*/
+"managementScene.welcome" = "Gestión de %@";
+
+/*PLANNING SCREEN*/
+"planningScene.welcome" = "Planeación de %@";
 

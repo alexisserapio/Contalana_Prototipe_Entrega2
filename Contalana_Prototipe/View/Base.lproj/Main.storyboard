@@ -120,7 +120,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="lCS-l2-C94"/>
                     <navigationItem key="navigationItem" id="pKd-CY-AtH"/>
                     <connections>
-                        <segue destination="dwg-OB-XMm" kind="show" identifier="inventorySegue" id="Vwg-7C-Qer"/>
+                        <segue destination="dwg-OB-XMm" kind="presentation" identifier="inventorySegue" id="KbJ-Rn-sfC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3U-Dn-NvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -130,9 +130,9 @@
         <!--Add Product View Controller-->
         <scene sceneID="FUk-ce-eiN">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="cve-Zj-0w9" customClass="addProductViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="cve-Zj-0w9" customClass="addProductViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zcm-vo-sJx">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Pkh-az-SBH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -146,7 +146,7 @@
         <!--Gestión-->
         <scene sceneID="axO-kM-aNg">
             <objects>
-                <viewController id="jkB-3f-19W" sceneMemberID="viewController">
+                <viewController id="jkB-3f-19W" customClass="managementViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="USQ-LY-oUO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +216,7 @@
         <!--Planeación-->
         <scene sceneID="tG0-la-GLe">
             <objects>
-                <viewController title="Planeación" id="ftB-9h-anr" sceneMemberID="viewController">
+                <viewController title="Planeación" id="ftB-9h-anr" customClass="planningViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VF8-oI-O5z">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

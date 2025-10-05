@@ -1,36 +1,48 @@
-/*
-  Localizable.strings
-  Contalana_Prototipe
-
-  Created by UNAM on 22/08/25.
-  
-*/
-
 /*WELCOME INTERFACE*/
 "welcome.title" = "Welcome to Contalana";
-"welcome.subtitle" = "Let's achieve all the goals and objectives for your business together!";
+"welcome.subtitle" = "Let's achieve all your business goals together!";
 "welcome.button" = "Let's do it";
-"welcome.terms" = "By continuing, you agree to Contalana's Terms and Conditions and accept our Privacy Policy.";
-"welcome.terms.label" = "Contalana's Terms and Conditions";
-"welcome.terms.privacy" = "Privacy Policy";
-"welcome.signin" = "Already have an account?    Sign In";
+"welcome.terms" = "By continuing, you agree to Contalana's Terms and Conditions and Privacy Policy.";
+"welcome.terms.label" = "Contalana Terms and Conditions";
+"welcome.terms.policy" = "Privacy Policy";
+"welcome.signin" = "Already have an account?  Sign In";
 "welcome.signin.label" = "Sign In";
 
 /*INFORMATIVE INTERFACE*/
 "informative.button" = "Continue";
-"infoPoster.title.one" = "Contalana helps with managing my business";
-"infoPoster.description.one" = "With Contalana, keep better control of your business products in a quick and intuitive way";
+"infoPoster.title.one" = "Contalana helps manage my business";
+"infoPoster.description.one" = "With Contalana, keep better track of your business products quickly and intuitively.";
 "infoPoster.title.two" = "Contalana makes financial management simple";
-"infoPoster.description.two" = "Easily monitor your business profits and expenses. Also, get future projections, all in one place";
-"infoPoster.title.three" = "Contalana supports the growth of my business";
-"infoPoster.description.three" = "Let's work together to bring out the full potential of your business!";
+"infoPoster.description.two" = "Easily track your business profits and expenses. Also, get future projections all in one place.";
+"infoPoster.title.three" = "Contalana supports my business growth";
+"infoPoster.description.three" = "Let’s work together to unlock your business’s full potential!";
 
 /*BUSINESS NAME INTERFACE*/
-"bName.title" = "Are you ready to take your business management to the next level?";
-"bName.subtitle" = "What name would you like us to use to refer to your business?";
+"bName.title" = "Ready to take your business management to the next level?";
+"bName.subtitle" = "What name would you like us to use for your business?";
 "bName.button" = "I like this one";
-"bName.TextField.hint" = "\"EZ Market\"";
-"bName.Alert.title" = "Please, enter a valid name for your business";
-"bName.Alert.empty" = "Business name is Empty";
+"bName.TextField.hint" = "Grocery Store \"La esquinita\"";
+"bName.Alert.title" = "Enter a valid name for your business";
+"bName.Alert.empty" = "The business name is empty";
 "bName.Alert.notValid" = "Use between 5 and 32 characters, including letters, numbers, and the symbols: . _ $ & /";
-"bName.Alert.button" = "Ok";
+"bName.Alert.button" = "OK";
+
+/*TAB BAR*/
+"item.one" = "Home";
+"item.two" = "Inventory";
+"item.three" = "Management";
+"item.four" = "Planning";
+
+/*MAIN SCREEN*/
+"mainScene.welcome" = "Welcome %@";
+
+/*INVENTORY SCREEN*/
+"inventoryScene.welcome" = "%@'s Inventory";
+"inventoryScene.noProducts" = "No products in inventory";
+"inventoryScene.addProductButton" = "Add Product";
+
+/*MANAGEMENT SCREEN*/
+"managementScene.welcome" = "%@'s Management";
+
+/*PLANNING SCREEN*/
+"planningScene.welcome" = "%@'s Planning";
