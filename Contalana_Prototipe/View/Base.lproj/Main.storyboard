@@ -110,7 +110,7 @@
         <!--Inventory-->
         <scene sceneID="PTr-JC-ySC">
             <objects>
-                <viewController title="Main" id="dI9-nS-SNz" userLabel="Inventory" customClass="inventoryViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" modalPresentationStyle="fullScreen" id="dI9-nS-SNz" userLabel="Inventory" customClass="inventoryViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="li7-T6-N1X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,10 +118,30 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="lCS-l2-C94"/>
+                    <navigationItem key="navigationItem" id="pKd-CY-AtH"/>
+                    <connections>
+                        <segue destination="dwg-OB-XMm" kind="show" identifier="inventorySegue" id="Vwg-7C-Qer"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3U-Dn-NvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4795" y="-268"/>
+            <point key="canvasLocation" x="4836" y="-260"/>
+        </scene>
+        <!--Add Product View Controller-->
+        <scene sceneID="FUk-ce-eiN">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="cve-Zj-0w9" customClass="addProductViewController" customModule="Contalana_Prototipe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zcm-vo-sJx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Pkh-az-SBH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5Wk-jy-dr3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M7k-WQ-ssK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6830" y="-233"/>
         </scene>
         <!--Gestión-->
         <scene sceneID="axO-kM-aNg">
@@ -208,6 +228,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kef-va-ENa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4795" y="1265"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wqG-0B-pWi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="dwg-OB-XMm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="59n-fc-xtd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F4T-Ft-KAJ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cve-Zj-0w9" kind="relationship" relationship="rootViewController" id="bJ8-Qe-BKE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sg-0Y-n97" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5949" y="-233"/>
         </scene>
     </scenes>
     <resources>

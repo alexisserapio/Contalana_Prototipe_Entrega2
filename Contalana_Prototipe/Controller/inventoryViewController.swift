@@ -15,19 +15,24 @@ class inventoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
+        view.subviews.forEach { $0.removeFromSuperview() }
         let productExists = UserDefaults.standard.bool(forKey: "productExists")
-        guard productExists != true else { return }
-        setupUINoProducts()
+        
+        if productExists {
+            setupUI()
+        } else {
+            setupUINoProducts()
+        }
         
     }
     
     func setupUI(){
+        
         view.backgroundColor = UIColor.backgroundTint
         let businessName = UserDefaults.standard.string(forKey: "businessName")
         
@@ -42,11 +47,13 @@ class inventoryViewController: UIViewController {
         NSLayoutConstraint.activate([
             inventoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
             inventoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
+            inventoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75)
         ])
         
     }
     
     func setupUINoProducts(){
+
         view.backgroundColor = UIColor.backgroundTint
         let businessName = UserDefaults.standard.string(forKey: "businessName")
         
@@ -61,6 +68,7 @@ class inventoryViewController: UIViewController {
         NSLayoutConstraint.activate([
             inventoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.025),
             inventoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.bounds.width * 0.075),
+            inventoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75)
         ])
         
         view.addSubview(noProductsLabel)
@@ -90,6 +98,17 @@ class inventoryViewController: UIViewController {
             addProductButton.widthAnchor.constraint(equalToConstant: 200),
             addProductButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(buttonTapped))
+        addProductButton.addGestureRecognizer(tapGesture)
+        addProductButton.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func buttonTapped() {
+        print("Botón addProduct presionado")
+        self.performSegue(withIdentifier: "inventorySegue", sender: self)
+        
     }
 
     

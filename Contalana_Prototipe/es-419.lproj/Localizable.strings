@@ -46,5 +46,5 @@
 "mainScene.welcome" = "Bienvenido %@";
 
 /*INVENTORY SCREEN*/
-"inventoryScene.welcome" = "Tu inventario de %@";
+"inventoryScene.welcome" = "Inventario de %@";
 
