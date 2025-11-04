@@ -1,4 +1,4 @@
-# Contalana Prototipe Android  
+# Contalana Prototipe Swift
 Prototipo de la aplicación **Contalana** desarrollado de forma nativa para iOS utilizando **Swift**.  
 ---
 
